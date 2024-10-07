@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transform</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    #message {
+      font-size: 30px;
+      color: Red;
+      text-align: center;
+      margin-top: 20px;
+    }
+    .btn {
+      height: 30px;
+      width: 60px;
+      margin: 5px;
+      border: 2px solid black;
+      border-radius: 20px;
+      background-color: pink;
+      cursor: pointer;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #heart {
+      height: 100px;
+      width: 100px;
+      display: none;
+      font-size: 400px;
+      margin-top: 20px;
+      animation: heartBeat 1s infinite;
+    }
+    #yes:active {
+      background-color: green;
+    }
+    #no:hover {
+      transform: translateY(100px);
+    }
+    @keyframes heartBeat {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.2);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="message">
+    Do you marry me ?
+  </div>
+  <div class="container">
+    <div>
+      <button class="btn" id="yes">YES</button>
+      <button class="btn" id="no">NO</button>
+    </div>
+    <div id="heart">❤️</div>
+  </div>
+  
+  <script>
+    document.getElementById('yes').addEventListener('click', function() {
+      const heart = document.getElementById('heart');
+      heart.style.display = 'block';
+      
+      // Restart the animation
+      heart.style.animation = 'none';
+      heart.offsetHeight; // Trigger reflow
+      heart.style.animation = 'heartBeat 1s infinite';
+    });
+  </script>
+</body>
+</html>
